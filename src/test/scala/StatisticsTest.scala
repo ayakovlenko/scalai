@@ -1,8 +1,8 @@
 import org.scalatest.FunSuite
 
-import Correlation._
+import Statistics._
 
-class CorrelationTest extends FunSuite {
+class StatisticsTest extends FunSuite {
 
   test("correlation") {
     val xs = List(15, 12, 8, 8, 7, 7, 7, 6, 5, 3) map (_.toDouble)
