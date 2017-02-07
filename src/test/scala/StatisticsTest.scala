@@ -1,6 +1,6 @@
 import org.scalatest.FunSuite
 
-import Statistics._
+import v1.Statistics._
 
 class StatisticsTest extends FunSuite {
 

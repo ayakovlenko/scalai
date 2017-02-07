@@ -1,4 +1,6 @@
-import la.v1.Vect
+package v1
+
+import v1.la.Vect
 
 object Statistics {
 

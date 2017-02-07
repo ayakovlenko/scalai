@@ -1,4 +1,4 @@
-package la.v1
+package v1.la
 
 case class Vect(seq: Seq[Double]) {
 
