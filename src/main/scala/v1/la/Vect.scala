@@ -44,7 +44,26 @@ case class Vect(seq: Seq[Double]) {
     (this dot that) / (this.magnitude * that.magnitude)
   }
 
+  def isZero: Boolean = this.seq forall (_ == 0)
+
+  def isParallelTo(that: Vect): Boolean = {
+    if (this.isZero || that.isZero) true else (this angle that) ~= (math.Pi, precision)
+  }
+
+  def isOrthogonalTo(that: Vect): Boolean = {
+    if (this.isZero || that.isZero) true else (this dot that) ~= (0, precision)
+  }
+
   override def toString: String = seq.mkString("<[", ", ", "]>")
+
+  private val precision = 1e-14
+
+  private implicit class DoubleLike(x: Double) {
+
+    def ~=(y: Double, precision: Double): Boolean = {
+      (x - y).abs < precision
+    }
+  }
 }
 
 object Vect {
