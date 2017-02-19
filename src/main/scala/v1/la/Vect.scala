@@ -1,6 +1,6 @@
 package v1.la
 
-case class Vect(seq: Seq[Double]) {
+case class Vect(override val seq: Seq[Double]) extends Iterable[Double] {
 
   def +(that: Vect): Vect = {
     require(this.seq.length == that.seq.length, "addition of vectors of different length")
@@ -64,11 +64,13 @@ case class Vect(seq: Seq[Double]) {
       (x - y).abs < precision
     }
   }
+
+  override def iterator: Iterator[Double] = seq.iterator
 }
 
 object Vect {
 
   def of(seq: Double*): Vect = Vect(seq)
 
-  def fill(len: Int)(elem: Double): Vect = Vect(Iterator.fill(len)(elem).toSeq)
+  def fill(len: Int)(elem: Double): Vect = Vect(1 to len map (_ => elem))
 }
